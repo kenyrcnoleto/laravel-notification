@@ -17,6 +17,7 @@ class UsersSeeder extends Seeder
                 'name'     => 'Admin do CRM',
                 'email'    => 'admin@crm.com',
                 'password' => 'password',
+                'notification_channels' => ['mail'],
             ]);
 
         $this->normalUsers();

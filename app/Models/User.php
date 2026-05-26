@@ -29,6 +29,7 @@ class User extends Authenticatable implements Auditable
         'restored_at',
         'restored_by',
         'deleted_by',
+        'notification_channels',
     ];
 
     protected $hidden = [
@@ -39,6 +40,7 @@ class User extends Authenticatable implements Auditable
     protected $casts = [
         'email_verified_at' => 'datetime',
         'password'          => 'hashed',
+        'notification_channels' => 'array',
     ];
 
     public function restoredBy(): BelongsTo
