@@ -8,7 +8,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 
-class OpportunityWon extends Notification
+class OpportunityWon extends Notification implements ShouldQueue
 {
     use Queueable;
 
@@ -16,7 +16,7 @@ class OpportunityWon extends Notification
         public Opportunity $opportunity
     )
     {
-        //
+        $this->queue = 'notifications';
 
     }
 
