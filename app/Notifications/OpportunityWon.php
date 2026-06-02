@@ -16,7 +16,7 @@ class OpportunityWon extends Notification implements ShouldQueue
         public Opportunity $opportunity
     )
     {
-        $this->queue = 'notifications';
+        // $this->queue = 'notifications';
 
     }
 

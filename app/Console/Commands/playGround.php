@@ -18,9 +18,9 @@ class playGround extends Command
     {
         // $user = User::inRandomOrder()->first();
         // dd($user);
-        // User::query()->limit(10)->get();
+        $users = User::query()->limit(5)->get();
 
-        $users = User::query()->get();
+        // $users = User::query()->get();
 
         // dd(User::query()->get()->count());
 
