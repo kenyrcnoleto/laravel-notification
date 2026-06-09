@@ -32,12 +32,22 @@ class Sidebar extends Component
         if($this->modal) {
           // return auth()->user()->notifications;
 
-          /** $var App\Models\User $user */
+          /** @var App\Models\User $user */
           $user = Auth::user();
 
            return $user->notifications()->simplePaginate(8);
         }
         return collect();
+    }
+
+    public function markAsRead(string $id): void
+    {
+        /** @var App\Models\User $user */
+        $user = Auth::user();
+
+        $user->notifications()->where('id', $id)->update(['read_at' => now()]);
+
+        $this->dispatch('notifications::update-count');
     }
 
     public function render()
