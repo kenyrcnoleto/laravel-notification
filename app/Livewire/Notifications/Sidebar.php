@@ -40,12 +40,31 @@ class Sidebar extends Component
         return collect();
     }
 
+     #[Computed]
+    public function unread(): int
+    {
+        /** @var App\Models\User $user */
+        $user = Auth::user();
+
+        return $user->notifications()->whereNull('read_at')->count();
+    }
+
     public function markAsRead(string $id): void
     {
         /** @var App\Models\User $user */
         $user = Auth::user();
 
         $user->notifications()->where('id', $id)->update(['read_at' => now()]);
+
+        $this->dispatch('notifications::update-count');
+    }
+
+    public function markAllAsRead(): void
+    {
+        /** @var App\Models\User $user */
+        $user = Auth::user();
+
+        $user->notifications()->whereNull('read_at')->update(['read_at' => now()]);
 
         $this->dispatch('notifications::update-count');
     }

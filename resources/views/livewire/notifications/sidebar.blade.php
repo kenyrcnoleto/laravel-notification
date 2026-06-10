@@ -4,6 +4,19 @@
 
     {{-- //all times that have a component inside a loop should have a unique key, so Livewire can track them properly. You can use the notification ID for this purpose. --}}
     @if ($this->notifications->isNotEmpty())
+         <div class="flex justify-between items-center mb-4">
+            <span class="text-sm text-gray-500">
+                {{ $this->unread }} unread(s)
+            </span>
+
+            @if($this->unread > 0)
+                <x-button
+                    label="Mark all as read"
+                    class="btn-ghost btn-xs"
+                    wire:click="markAllAsRead"
+                />
+            @endif
+        </div>
 
     @foreach ($this->notifications as $notification)
         <x-notification.item :notification="$notification"
