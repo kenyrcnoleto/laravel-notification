@@ -27,6 +27,11 @@ class WelcomeNotification extends Notification
                     ->line('Thank you for using our application!');
     }
 
+    public function toSms(object $notifiable): string
+    {
+        return "Hello {$notifiable->name}, welcome to our CRM! Happy to see you here.";
+    }
+
     public function toArray(object $notifiable): array
     {
         return [
