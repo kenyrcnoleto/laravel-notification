@@ -43,6 +43,21 @@ class User extends Authenticatable implements Auditable
         'notification_channels' => 'array',
     ];
 
+    // public function routeNotificationForSms()
+    // {
+    //     return $this->phone;
+    // }
+
+    public function routeNotificationForWhatsApp()
+    {
+        return $this->phone;
+    }
+
+    public function routeNotificationForTelegram()
+    {
+        return $this->phone;
+    }
+
     public function restoredBy(): BelongsTo
     {
         return $this->belongsTo(User::class, 'restored_by');
