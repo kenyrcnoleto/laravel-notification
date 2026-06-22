@@ -43,10 +43,10 @@ class User extends Authenticatable implements Auditable
         'notification_channels' => 'array',
     ];
 
-    public function routeNotificationForSms()
-    {
-        return $this->phone;
-    }
+    // public function routeNotificationForSms()
+    // {
+    //     return $this->phone;
+    // }
 
     public function routeNotificationForWhatsApp()
     {
